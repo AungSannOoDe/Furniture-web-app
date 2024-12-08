@@ -29,14 +29,17 @@ Route::middleware([
         Route::prefix('Category')->group(function(){
             Route::get('/',[CategoryController::class,'category'])->name('admin#category');
             Route::post('/addCate',[CategoryController::class,'addCate'])->name('admin#add#cate');
-    Route::get('/EditCategory/id',[CategoryController::class,'edtitCate'])->name('admin#Cate#edit');
+    Route::get('/EditCategory/{id}',[CategoryController::class,'editCate'])->name('admin#Cate#edit');
     Route::get('/deleteCategory/{id}',[CategoryController::class,'deleteCate'])->name('admin#Cate#delete');
+    Route::post('/Category/Update',[CategoryController::class,'CateUpdate'])->name('admin#Cate#update');
         });
         Route::prefix('product')->group(function(){
             Route::get('Cate/search',[ProductController::class,'list'])->name('admin#Categ#search');
             Route::post('addproduct',[ProductController::class,'addproduct'])->name('admin#add#product');
             Route::get('/details/{id}',[ProductController::class,'productdet'])->name('product#details');
             Route::get('delete/{id}',[ProductController::class,'deleteproduct'])->name('product#delete');
+            Route::get('edit/{id}',[ProductController::class,'editproduct'])->name('product#edit');
+            Route::post('update',[ProductController::class,'updateProduct'])->name('admin#update#product');
         });
     });
 

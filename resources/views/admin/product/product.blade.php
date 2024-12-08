@@ -221,7 +221,7 @@
                                         {{ $p->updated_at }}
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary">Edit</a>
+                                        <a class="btn btn-primary" href="{{route('product#edit',$p->id)}}">Edit</a>
                                         <a class="btn btn-danger" href="{{ route('product#delete', $p->id) }}">Delete</a>
                                         <a class="btn btn-success" href="{{ route('product#details', $p->id) }}">View</a>
                                     </td>

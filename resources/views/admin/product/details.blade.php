@@ -18,8 +18,6 @@
                                     {{ $p->updated_at }}
                                 </p>
                             </div>
-
-
                             <div class="row px-3 py-2">
                                 <div class="col-6">
                                     <div class="d-flex justify-content-center ">
@@ -60,8 +58,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

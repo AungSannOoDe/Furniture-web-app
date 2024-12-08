@@ -14,6 +14,17 @@ class CategoryController extends Controller
       Category::create($data);
       return back();
     }
+    public function CateUpdate(Request $request){
+        $this->CategoryValidation($request);
+        $data=$this->getData($request);
+        Category::where('id',$request->id)->update($data);
+        return redirect()->route('admin#category')->with(['updateSuccess'=>'Updated Successfully.....']);
+
+    }
+    public function editCate($id){
+        $Category=Category::where('id',$id)->get();
+      return view("admin.product.EditCategory",compact('Category'));
+    }
     public function deleteCate($id){
 
           Category::where('id',$id)->delete();
@@ -29,10 +40,15 @@ class CategoryController extends Controller
      ];
      return $data;
     }
-    private function CategoryValidation($request){
-    Validator::make($request->all(),[
-             'CateName'=>'required|min:4'
-    ])->validate();
+    public function CategoryValidation($request){
+        Validator::make($request->all(),[
+            'CateName'=>'required|min:4,|unique:categories,Cate_name,'.$request->CategoryID
+        ],[
+            'CateName.required'=>'u need to fill',
+            'CateName.unique'=>'this name is already exist'
+        ])->validate();
     }
+
+
 
 }

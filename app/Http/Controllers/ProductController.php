@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -21,6 +22,30 @@ class ProductController extends Controller
             $Categories=Category::get();
             $products=Product::get();
             return view('admin.product.product',compact(['Categories','products']));
+        }
+        public function updateProduct(Request $request){
+            $this->ProductUpdateValidationCheck($request);
+           $data=$this->getUpdateData($request);
+           if($request->hasFile('image')){
+
+            $oldImageName=Product::where('id',$request->furId)->first();
+            $oldImageName=$oldImageName->image;
+            if($oldImageName !=null){
+                Storage::delete('public/image'.$oldImageName);
+            }
+            $fileName=uniqid().$request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('image',$fileName,'public');
+            $data['image']= $fileName;
+            Product::where('id',$request->furId)->update($data);
+            return redirect()->route('admin#product')->with(['updateSuccess'=>'Product Updated Successful']);
+
+          }
+
+        }
+        public function editproduct($id){
+            $products=product::get()->where('id',$id);
+            $Categories=Category::get();
+            return view('admin.product.Editing',compact(['products','Categories']));
         }
         public function addproduct(Request $request){
             $this->ProductValidationCheck($request);
@@ -44,7 +69,25 @@ class ProductController extends Controller
             "waiting"=>"required|integer"
         ])->validate();
     }
-
+    private function ProductUpdateValidationCheck($request){
+        Validator::make($request->all(),[
+    "furName"=>"required|min:3|unique:products,name".$request->id,
+    "furPrice"=>"required|min:5|integer",
+    "image"=>"required|mimes:png,jpeg,jpg|file",
+    "pizzaCategory"=>"required",
+    "furDescription"=>"required",
+    "Waiting"=>"required",
+        ])->validate();
+    }
+private function getUpdateData($request){
+    return[
+        "name"=>$request->furName,
+        "Cate_id"=>$request->pizzaCategory,
+        "price"=>$request->furPrice,
+        "descriptions"=>$request->furDescription,
+        "waiting_time"=>$request->Waiting
+    ];
+}
     private function getData($request){
         return[
     "name"=>$request->name,
