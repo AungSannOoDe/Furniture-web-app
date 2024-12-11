@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     public function productdet($id){
+
         $products=product::get()->where('id',$id);
         return view('admin.product.details',compact('products'));
         }
@@ -20,9 +21,15 @@ class ProductController extends Controller
         }
         public  function product(){
             $Categories=Category::get();
-            $products=Product::get();
-            return view('admin.product.product',compact(['Categories','products']));
+            $product= Product::select('products.*','categories.Cate_name as CatName')->when(request('key'),function($query){
+                $query->where('name','like','%'.request('key').'%');
+              })
+              ->join('categories','categories.id','products.Cate_id')
+              ->orderBy('created_at','desc')->paginate(5);
+              $product->appends(request()->all());
+            return view('admin.product.product',compact(['product','Categories']));
         }
+
         public function updateProduct(Request $request){
             $this->ProductUpdateValidationCheck($request);
            $data=$this->getUpdateData($request);

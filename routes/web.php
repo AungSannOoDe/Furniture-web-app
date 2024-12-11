@@ -40,6 +40,7 @@ Route::middleware([
             Route::get('delete/{id}',[ProductController::class,'deleteproduct'])->name('product#delete');
             Route::get('edit/{id}',[ProductController::class,'editproduct'])->name('product#edit');
             Route::post('update',[ProductController::class,'updateProduct'])->name('admin#update#product');
+            Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
         });
     });
 
