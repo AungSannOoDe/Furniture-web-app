@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -16,6 +17,16 @@ class AuthController extends Controller
         return view('admin.Dashboard.admindashboard');
     }
     public function viewusers(){
-        return view('admin.users.user');
+        $admin=User::when(request('key'),function($query){
+            $query->orWhere('name','like','%'.request('key').'%')
+            ->orWhere('address','like','%'.request('key').'%')
+            ->orWhere('email','like','%'.request('key').'%')
+            ;
+              })
+              ->where('role','admin')
+              ->orderBy('updated_at','asc')
+              ->paginate(2);
+        $admin->appends(request()->all());
+        return view('admin.users.user',compact('admin'));
     }
 }

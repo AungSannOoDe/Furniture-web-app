@@ -64,9 +64,16 @@
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a href="{{route('admin#selectors')}}" class="nav-link collapsed">Contacts</a>
-                            <a  class="nav-link collapsed" href="{{route('admin#users')}}">Users</a>
-                            <a  class="nav-link collapsed"href="{{route('admin#product')}}">products</a>
+                            <a href="{{route('admin#selectors')}}" class="nav-link collapsed">
+
+                                <i class="fa-solid fa-envelope"></i>Contacts
+
+                            </a>
+                            <a  class="nav-link collapsed" href="{{route('admin#users')}}">
+                                <i class="fa-solid fa-user"></i>
+                                Users</a>
+                            <a  class="nav-link collapsed"href="{{route('admin#product')}}">
+                                <i class="fa-brands fa-product-hunt"></i>products</a>
                             <a href="#" class="nav-link collapsed">Orders</a>
                             <a href="{{route('admin#category')}}" class="nav-link collapsed">Categories</a>
                         </div>

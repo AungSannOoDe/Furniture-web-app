@@ -220,7 +220,7 @@
                         <tbody>
      @if (count($product)==0)
      <tr>
-        <td>
+        <td colspan="7">
             <h2 class="text-danger text-center ">There is no result for this search</h2>
         </td>
      </tr>
