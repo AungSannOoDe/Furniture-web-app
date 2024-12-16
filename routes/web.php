@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\CategoryController;
@@ -22,7 +23,7 @@ Route::middleware([
             Route::get('only',[profileController::class,'profile'])->name('admin#profile');
             Route::get('adminChangepassword',[profileController::class,'changePassword'])->name('admin#changepassword');
         });
-        Route::get('Contacts',[VoterController::class,'viewVoter'])->name('admin#selectors');
+        Route::get('Contacts',[ContactController::class,'viewContact'])->name('admin#selectors');
         Route::get('adminusers',[AuthController::class,'viewusers'])->name('admin#users');
         Route::get('adminproduct',[ProductController::class,'product'])->name('admin#product');
 

@@ -196,11 +196,15 @@
                     <i class="fas fa-table me-1"></i>
                     Product list
                 </div>
-                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3  mt-5" method="GET" action="{{route('admin#product')}}">
+                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3  mt-5" method="GET"
+                    action="{{ route('admin#product') }}">
                     <div class="input-group">
                         @csrf
-                        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" name="key" value="{{request('key')}}" />
-                        <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                        <input class="form-control" type="text" placeholder="Search for..."
+                            aria-label="Search for..." aria-describedby="btnNavbarSearch" name="key"
+                            value="{{ request('key') }}" />
+                        <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i
+                                class="fas fa-search"></i></button>
                     </div>
                 </form>
                 <div class="card-body">
@@ -218,47 +222,49 @@
                             </tr>
                         </thead>
                         <tbody>
-     @if (count($product)==0)
-     <tr>
-        <td colspan="7">
-            <h2 class="text-danger text-center ">There is no result for this search</h2>
-        </td>
-     </tr>
-
-     @else
-     @foreach ($product as $p)
-     <tr>
-         <td>
-             {{ $p->name }}
-         </td>
-         <td>
-             <img src="{{ asset('/storage/image/' . $p->image) }}" alt=""
-                 class="img-tumbnail " style="width:60px; height:60px;">
-         </td>
-         </td>
-         <td>
-             {{ $p->price }}
-         </td>
-         <td>
-             {{ $p->waiting_time }}
-         </td>
-         <td>
-             {{$p->CatName}}
-         </td>
-         <td>
-             {{ $p->view_count }}
-         </td>
-         <td>
-             {{ $p->updated_at }}
-         </td>
-         <td>
-             <a class="btn btn-primary" href="{{ route('product#edit', $p->id) }}">Edit</a>
-             <a class="btn btn-danger" href="{{ route('product#delete', $p->id) }}">Delete</a>
-             <a class="btn btn-success" href="{{ route('product#details', $p->id) }}">View</a>
-         </td>
-     </tr>
- @endforeach
-     @endif
+                            @if (count($product) == 0)
+                                <tr>
+                                    <td colspan="7">
+                                        <h2 class="text-danger text-center ">There is no result for this search</h2>
+                                    </td>
+                                </tr>
+                            @else
+                                @foreach ($product as $p)
+                                    <tr>
+                                        <td>
+                                            {{ $p->name }}
+                                        </td>
+                                        <td>
+                                            <img src="{{ asset('/storage/image/' . $p->image) }}" alt=""
+                                                class="img-tumbnail " style="width:60px; height:60px;">
+                                        </td>
+                                        </td>
+                                        <td>
+                                            {{ $p->price }}
+                                        </td>
+                                        <td>
+                                            {{ $p->waiting_time }}
+                                        </td>
+                                        <td>
+                                            {{ $p->CatName }}
+                                        </td>
+                                        <td>
+                                            {{ $p->view_count }}
+                                        </td>
+                                        <td>
+                                            {{ $p->updated_at }}
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary"
+                                                href="{{ route('product#edit', $p->id) }}">Edit</a>
+                                            <a class="btn btn-danger"
+                                                href="{{ route('product#delete', $p->id) }}">Delete</a>
+                                            <a class="btn btn-success"
+                                                href="{{ route('product#details', $p->id) }}">View</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
 
 
                         </tbody>

@@ -20,9 +20,8 @@ class AuthController extends Controller
         $admin=User::when(request('key'),function($query){
             $query->orWhere('name','like','%'.request('key').'%')
             ->orWhere('address','like','%'.request('key').'%')
-            ->orWhere('email','like','%'.request('key').'%')
-            ;
-              })
+            ->orWhere('email','like','%'.request('key').'%');
+        })
               ->where('role','admin')
               ->orderBy('updated_at','asc')
               ->paginate(2);

@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    //
+public function viewContact(){
+    return view('admin.Contact.Contact');
+}
 }
