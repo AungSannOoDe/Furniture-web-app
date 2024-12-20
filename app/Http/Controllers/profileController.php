@@ -13,6 +13,10 @@ class profileController extends Controller
         $userinfo=User::select()->where('id',$id)->first();
         return view('admin.profile.profile',compact('userinfo'));
     }
+    public function details($id){
+        $user=User::where('id',$id)->get();
+        return view('admin.users.details',compact('user'));
+    }
     public function changePassword(){
         return view('admin.profile.changepassword');
     }

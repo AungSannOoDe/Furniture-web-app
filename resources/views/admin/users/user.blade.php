@@ -67,7 +67,7 @@
         {{$adm->updated_at}}
     </td>
     <td>
-        <a href="" class="btn btn-success">View Details</a>
+        <a href="{{route('user#profile',$adm->id)}}" class="btn btn-success">View Details</a>
         <a href="" class="btn btn-warning">Edit</a>
         <a href="" class="btn btn-danger">Delete</a>
     </td>

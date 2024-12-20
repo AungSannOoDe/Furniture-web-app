@@ -26,7 +26,7 @@ Route::middleware([
         Route::get('Contacts',[ContactController::class,'viewContact'])->name('admin#selectors');
         Route::get('adminusers',[AuthController::class,'viewusers'])->name('admin#users');
         Route::get('adminproduct',[ProductController::class,'product'])->name('admin#product');
-
+       Route::get('adminprofie/{id}',[profileController::class,'details'])->name('user#profile');
         Route::prefix('Category')->group(function(){
             Route::get('/',[CategoryController::class,'category'])->name('admin#category');
             Route::post('/addCate',[CategoryController::class,'addCate'])->name('admin#add#cate');
