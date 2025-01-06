@@ -29,4 +29,7 @@ class AuthController extends Controller
         $admin->appends(request()->all());
         return view('admin.users.user',compact('admin'));
     }
+    public function details($id){
+        return($id);
+    }
 }

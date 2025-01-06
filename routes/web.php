@@ -25,6 +25,7 @@ Route::middleware([
         Route::get('Contacts',[VoterController::class,'viewVoter'])->name('admin#selectors');
         Route::get('adminusers',[AuthController::class,'viewusers'])->name('admin#users');
         Route::get('adminproduct',[ProductController::class,'product'])->name('admin#product');
+        Route::get('admin/user/{id}',[AuthController::class,'details'])->name('admin#details');
 
         Route::prefix('Category')->group(function(){
             Route::get('/',[CategoryController::class,'category'])->name('admin#category');

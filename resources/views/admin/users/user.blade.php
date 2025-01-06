@@ -10,7 +10,7 @@
    </div>
    <div class="card-body">
     <div class="d-flex justify-content-end">
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3  mt-3" method="GET" action="{{route('admin#product')}}">
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3  mt-3" method="GET" action="{{route('admin#users')}}">
             <div class="input-group">
                 @csrf
                 <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" name="key" value="{{request('key')}}" />
@@ -51,8 +51,8 @@
             {{$adm->updated_at}}
         </td>
         <td>
-            <a href="" class="btn btn-success">View Details</a>
-            <a href="" class="btn btn-warning">Edit</a>
+            <a href="{{route('admin#details',$adm->id)}}" class="btn btn-success">View Details </a>
+            <a href="" class="btn btn-dark">Message</a>
             <a href="" class="btn btn-danger">Delete</a>
         </td>
     </tr>
