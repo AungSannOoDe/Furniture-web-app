@@ -30,6 +30,11 @@ class AuthController extends Controller
         return view('admin.users.user',compact('admin'));
     }
     public function details($id){
-        return($id);
+        $userinfo=User::where('id',$id)->first();
+        return view('admin.users.userprofile',compact('userinfo'));
+    }
+    public function delete($id){
+        User::where('id',$id)->delete();
+  return back()->with(['success'=>"Users information deleted successfully"]);
     }
 }

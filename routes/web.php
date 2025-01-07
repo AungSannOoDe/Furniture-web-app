@@ -26,7 +26,7 @@ Route::middleware([
         Route::get('adminusers',[AuthController::class,'viewusers'])->name('admin#users');
         Route::get('adminproduct',[ProductController::class,'product'])->name('admin#product');
         Route::get('admin/user/{id}',[AuthController::class,'details'])->name('admin#details');
-
+    Route::get('users/delete/{id}',[AuthController::class,'delete'])->name('admin#user#delete');
         Route::prefix('Category')->group(function(){
             Route::get('/',[CategoryController::class,'category'])->name('admin#category');
             Route::post('/addCate',[CategoryController::class,'addCate'])->name('admin#add#cate');
