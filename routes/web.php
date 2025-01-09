@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\CategoryController;
@@ -27,6 +28,10 @@ Route::middleware([
         Route::get('adminproduct',[ProductController::class,'product'])->name('admin#product');
         Route::get('admin/user/{id}',[AuthController::class,'details'])->name('admin#details');
     Route::get('users/delete/{id}',[AuthController::class,'delete'])->name('admin#user#delete');
+    Route::get('uers/order',[OrderController::class,'viewsOrder'])->name('admin#orders');
+    Route::get('admin/status',[AjaxController::class,'status'])->name('status#order');
+    Route::get('status/update',[AjaxController::class,'statusUpdate'])->name('status#update');
+
         Route::prefix('Category')->group(function(){
             Route::get('/',[CategoryController::class,'category'])->name('admin#category');
             Route::post('/addCate',[CategoryController::class,'addCate'])->name('admin#add#cate');

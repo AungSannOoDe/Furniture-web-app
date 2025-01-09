@@ -11,7 +11,7 @@
                     class="rounded-circle img-fluid" style="width: 150px;">
                   <h5 class="my-3">{{$userinfo->name}}</h5>
                   <p class="text-muted mb-1">{{$userinfo->email}}</p>
-                  <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                  <p class="text-muted mb-4"></p>
                   <div class="d-flex justify-content-center mb-2">
                     <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Follow</button>
                     <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button>
@@ -45,16 +45,16 @@
                       <p class="mb-0">Phone</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">(097) 234-5678</p>
+                      <p class="text-muted mb-0"></p>
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0">Mobile</p>
+                      <p class="mb-0">Role</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">(098) 765-4321</p>
+                      <p class="text-muted mb-0">{{$userinfo->role}}</p>
                     </div>
                   </div>
                   <hr>

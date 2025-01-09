@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Crypt;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -30,8 +31,10 @@ class AuthController extends Controller
         return view('admin.users.user',compact('admin'));
     }
     public function details($id){
-        $userinfo=User::where('id',$id)->first();
-        return view('admin.users.userprofile',compact('userinfo'));
+        $adminId=decrypt($id);
+        $userinfo=User::where('id',$adminId)->first();
+        $hashing=Hash::make(User::where('id',$id)->first());
+        return view('admin.users.userprofile',compact(['userinfo','hashing']));
     }
     public function delete($id){
         User::where('id',$id)->delete();
