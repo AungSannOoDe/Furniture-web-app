@@ -31,7 +31,7 @@ Route::middleware([
     Route::get('uers/order',[OrderController::class,'viewsOrder'])->name('admin#orders');
     Route::get('admin/status',[AjaxController::class,'status'])->name('status#order');
     Route::get('status/update',[AjaxController::class,'statusUpdate'])->name('status#update');
-
+    Route::get('orderlist/{ordercode}',[AuthController::class,'viewsOrder'])->name('users#orderlists');
         Route::prefix('Category')->group(function(){
             Route::get('/',[CategoryController::class,'category'])->name('admin#category');
             Route::post('/addCate',[CategoryController::class,'addCate'])->name('admin#add#cate');

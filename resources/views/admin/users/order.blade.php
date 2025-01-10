@@ -22,7 +22,7 @@
                         <tr>
                             <td>{{$o->id}}</td>
                             <td>{{$o->username}}</td>
-                            <td>{{$o->order_code}}</td>
+                            <td><a href="{{route('users#orderlists',$o->order_code)}}">{{$o->order_code}} </a> </td>
                             <td>{{$o->total_price}}</td>
                             <td>{{$o->created_at->format('F-j-Y')}}</td>
                             <td>
