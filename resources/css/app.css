@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+    .section-container{
+        @apply max-w-7xl mx-auto;
+    }
+    .input_box{
+        @apply h-14 w-96 border block rounded-lg border-slate-700 mt-2;
+    }
+    .range-card{
+        @apply h-[480px] object-cover w-full;
+    }
+    .range-card-text{
+        @apply text-center font-bold text-xl;
+    }
+    .product-card{
+        @apply bg-zinc-300 py-6 px-5;
+    }
+    .card-image{
+        @apply h-[300px] w-full object-cover object-center;
+    }
+    .btn{
+        @apply bg-orange-100 w-10 h-10 rounded-lg text-sm transition-all hover:bg-yellow-600 hover:text-white
+    }
+    .brand-text{
+        @apply font-extralight text-slate-400
+    }
+    .size-btn{
+        @apply  border-0  w-9 h-9 bg-orange-200 rounded-md px-2 text-xl hover:bg-yellow-700 hover:text-white transition-all duration-100
+    }
+}
+
+
 [x-cloak] {
     display: none;
 }
+

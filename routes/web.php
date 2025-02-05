@@ -4,6 +4,7 @@ use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\profileController;
@@ -48,7 +49,14 @@ Route::middleware([
             Route::get('edit/{id}',[ProductController::class,'editproduct'])->name('product#edit');
             Route::post('update',[ProductController::class,'updateProduct'])->name('admin#update#product');
             Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
-            Route::get('home',[ProductController::class,'index'])->name('user#index');
+
+        });
+        Route::prefix('user')->group(function(){
+            Route::get('home',[userController::class,'index'])->name('user#index');
+            Route::get('product',[userController::class,'product'])->name('user#product');
+            Route::get('singleProduct',[userController::class,'singleProduct'])->name('user#singleproduct');
+            Route::get('billings',[userController::class,'billings'])->name('user#billings');
+            Route::get('Contact',[userController::class,'Contact'])->name('user#Contact');
         });
     });
 

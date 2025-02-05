@@ -29,9 +29,7 @@ class ProductController extends Controller
               $product->appends(request()->all());
             return view('admin.product.product',compact(['product','Categories']));
         }
-     public function index(){
-        return view('user.app');
-     }
+
         public function updateProduct(Request $request){
             $this->ProductUpdateValidationCheck($request);
            $data=$this->getUpdateData($request);
