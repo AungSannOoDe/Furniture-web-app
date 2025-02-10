@@ -22,7 +22,12 @@ class userController extends Controller
         return view('user.Contact');
      }
      public function about(){
-
+         return view('user.about');
      }
-
+     public function details(){
+        return view('user.details');
+     }
+public function cart(){
+    return view('user.cart');
+}
 }

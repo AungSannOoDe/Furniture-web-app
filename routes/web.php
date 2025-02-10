@@ -57,6 +57,9 @@ Route::middleware([
             Route::get('singleProduct',[userController::class,'singleProduct'])->name('user#singleproduct');
             Route::get('billings',[userController::class,'billings'])->name('user#billings');
             Route::get('Contact',[userController::class,'Contact'])->name('user#Contact');
+            Route::get('about',[userController::class,'about'])->name('user#about');
+            Route::get('details',[userController::class,'details'])->name('user#details');
+            Route::get('cart',[userController::class,'cart'])->name('user#cart');
         });
     });
 

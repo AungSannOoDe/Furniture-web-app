@@ -16,10 +16,10 @@
             <span class="ml-3 text-xl">Furnio</span>
           </a>
           <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base gap-x-6 justify-center font-medium">
-            <a class="mr-5 hover:text-gray-900 cursor-pointer " href="./index.html">Home</a>
-            <a class="mr-5 hover:text-gray-900 cursor-pointer" href="./product.html">Shop</a>
-            <a class="mr-5 hover:text-gray-900 cursor-pointer">about</a>
-            <a class="mr-5 hover:text-gray-900 cursor-pointer">Contact us</a>
+            <a class="mr-5 hover:text-gray-900 cursor-pointer " href="{{route('user#index')}}">Home</a>
+            <a class="mr-5 hover:text-gray-900 cursor-pointer" href="{{route('user#product')}}">Shop</a>
+            <a class="mr-5 hover:text-gray-900 cursor-pointer" href="{{route('user#about')}}">about</a>
+            <a class="mr-5 hover:text-gray-900 cursor-pointer" href="{{route('user#Contact')}}">Contact us</a>
           </nav>
          <div class="space-x-5">
           <i class="fa-solid fa-cart-shopping"></i>
