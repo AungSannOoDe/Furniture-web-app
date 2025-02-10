@@ -10,7 +10,20 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\CategoryController;
 
-Route::redirect('/', '/loginPage');
+Route::redirect('/', '/user/home');
+Route::prefix('user')->group(function(){
+    Route::get('home',[userController::class,'index'])->name('user#index');
+    Route::get('product',[userController::class,'product'])->name('user#product');
+    Route::get('singleProduct',[userController::class,'singleProduct'])->name('user#singleproduct');
+    Route::get('billings',[userController::class,'billings'])->name('user#billings');
+    Route::get('Contact',[userController::class,'Contact'])->name('user#Contact');
+    Route::get('about',[userController::class,'about'])->name('user#about');
+    Route::get('details',[userController::class,'details'])->name('user#details');
+    Route::get('cart',[userController::class,'cart'])->name('user#cart');
+});
+
+
+
 Route::get('loginPage',[AuthController::class,'loginPage'])->name('admin#loginPage');
 Route::get('RegisterPage',[AuthController::class,'RegisterPage'])->name('admin#register');
 
@@ -51,16 +64,7 @@ Route::middleware([
             Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
 
         });
-        Route::prefix('user')->group(function(){
-            Route::get('home',[userController::class,'index'])->name('user#index');
-            Route::get('product',[userController::class,'product'])->name('user#product');
-            Route::get('singleProduct',[userController::class,'singleProduct'])->name('user#singleproduct');
-            Route::get('billings',[userController::class,'billings'])->name('user#billings');
-            Route::get('Contact',[userController::class,'Contact'])->name('user#Contact');
-            Route::get('about',[userController::class,'about'])->name('user#about');
-            Route::get('details',[userController::class,'details'])->name('user#details');
-            Route::get('cart',[userController::class,'cart'])->name('user#cart');
-        });
+
     });
 
 });
