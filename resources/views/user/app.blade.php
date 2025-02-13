@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/output.css">
+    <link rel="icon" href="{{asset('images/logo.png')}}" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Home</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
@@ -13,7 +13,7 @@
         <div class="max-w-7xl mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ">
           <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 font-poppins">
             <img src="{{asset('images/logo.png')}}" alt="" width="50px" height="32px">
-            <span class="ml-3 text-xl">Furnio</span>
+            <span > <a href="{{route('admin#loginPage')}}" class="ml-3 text-xl">Furnio</a> </span>
           </a>
           <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base gap-x-6 justify-center font-medium">
             <a class="mr-5 hover:text-gray-900 cursor-pointer " href="{{route('user#index')}}">Home</a>
@@ -22,8 +22,13 @@
             <a class="mr-5 hover:text-gray-900 cursor-pointer" href="{{route('user#Contact')}}">Contact us</a>
           </nav>
          <div class="space-x-5">
-          <i class="fa-solid fa-cart-shopping"></i>
-            <i class="fa-solid fa-user"></i>
+          <a href="{{route('user#cart')}}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            <a href="{{route('user#login')}}">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
          </div>
         </div>
         @yield('header')

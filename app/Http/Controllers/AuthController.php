@@ -51,4 +51,10 @@ class AuthController extends Controller
           ->get();
           return view('admin.users.oederlist',compact('orderlist'));
     }
+    public function userlogin(){
+        return  view('user.loginPage');
+    }
+    public function userRegister(){
+        return view('user.register');
+    }
 }

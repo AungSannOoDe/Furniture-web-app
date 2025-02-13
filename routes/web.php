@@ -11,6 +11,8 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\CategoryController;
 
 Route::redirect('/', '/user/home');
+Route::get('userloginPage',[AuthController::class,'userLogin'])->name('user#login');
+Route::get('userregisterPage',[AuthController::class,'userRegister'])->name('user#register');
 Route::prefix('user')->group(function(){
     Route::get('home',[userController::class,'index'])->name('user#index');
     Route::get('product',[userController::class,'product'])->name('user#product');

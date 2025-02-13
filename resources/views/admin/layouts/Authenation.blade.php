@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title> Movie ticket Dashboard</title>
+    <title> furniture</title>
     <meta charset="utf-8">
+    <link rel="icon" href="{{asset('images/logo.png')}}" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
