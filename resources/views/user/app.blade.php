@@ -8,8 +8,8 @@
     <title>Home</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body>
-    <header class="text-gray-600  font-montserrat  bg-white z-[10000]">
+<body class="">
+    <header class="text-gray-600  font-montserrat  bg-white z-[10000] relative">
         <div class="max-w-7xl mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ">
           <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 font-poppins">
             <img src="{{asset('images/logo.png')}}" alt="" width="50px" height="32px">
@@ -22,17 +22,96 @@
             <a class="mr-5 hover:text-gray-900 cursor-pointer" href="{{route('user#Contact')}}">Contact us</a>
           </nav>
          <div class="space-x-5">
-          <a href="{{route('user#cart')}}">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <a href="{{route('user#cart')}}" class="btnCart">
+            <i class="fa-solid fa-cart-shopping "></i>
             </a>
-            <a href="{{route('user#login')}}">
-                <i class="fa-solid fa-user"></i>
+            <a href="{{route('user#login')}}" class="btnprofile">
+                <i class="fa-solid fa-user  "></i>
             </a>
 
          </div>
         </div>
+        <section>
+            <div class="w-[450px] bg-white h-[600px] absolute top-0 right-0 px-6 py-6 invisible cart">
+                <div class="flex  justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold tracking-wider">Shopping   Cart</h1>
+                    </div>
+                    <h1 class="self-center"><i class="fa-solid fa-xmark" id="remove"></i></h1>
+                </div>
+                <div class="mt-8  w-48">
+                    <hr>
+                </div>
+                {{-- cart items --}}
+               <section>
+                <div class="flex justify-between mt-5">
+                    <div>
+                        <img src="{{asset('images/sofa.png')}}" alt="" width="90px" height="90px">
+                    </div>
+                    <div class="self-center">
+                        <h1 class="text-xl font-bold tracking-wider"> Asagaba Sofa</h1>
+                         <div class="flex justify-center space-x-5 text-xs">
+                            <p>1</p>
+                            <p>X</p>
+                            <p class="text-yellow-600">140000 kyats</p>
+                         </div>
+                    </div>
+                    <div class="self-center">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-5">
+                    <div>
+                        <img src="{{asset('images/product2.png')}}" alt="" width="90px" height="90px">
+                    </div>
+                    <div class="self-center">
+                        <h1 class="text-xl font-bold tracking-wider"> Asagaba Sofa</h1>
+                         <div class="flex justify-center space-x-5 text-xs">
+                            <p>1</p>
+                            <p>X</p>
+                            <p class="text-yellow-600">140000 kyats</p>
+                         </div>
+                    </div>
+                    <div class="self-center">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                </div>
+               </section>
+               <div  class="mt-14">
+                  <div class="flex justify-start   space-x-32">
+                        <h1 class="text-md font-bold tracking-wider">Total</h1>
+                        <h1 class="text-md text-yellow-600 font-bold tracking-wider ml-5">280000 kyats</h1>
+                  </div>
+               </div>
+               <div class="mt-8">
+                <hr>
+                <div class="mt-8  flex justify-center space-x-14">
+      <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Cart</button>
+      <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Checkout</button>
+      <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Details</button>
+                </div>
+               </div>
+             <div>
+
+             </div>
+
+            </div>
+            <div class="w-[150px] h-[150px] bg-white absolute    top-16    left-[89%] px-3 rounded-lg profile invisible">
+                <div class="flex justify-end ">
+                    <i class="fa-solid fa-xmark" id="removeprofile"></i>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-[50px] h-[50px] rounded-full bg-yellow-600 "></div>
+                </div>
+              <h2 class="text-center mt-3">Aung Sann Oo</h2>
+               <div class="ml-8">
+                <button class="bg-yellow-600 px-2 py-1  text-white  text-center rounded-md ">log out</button>
+               </div>
+            </div>
+        </section>
         @yield('header')
-      </header>
+
+    </header>
       @yield('Content')
 
            <footer class="bg-white mt-56 px-2 py-3">
@@ -63,4 +142,6 @@
       </footer>
 
 </body>
+<script src="{{asset('js/layout.js')}}">
+</script>
 </html>
