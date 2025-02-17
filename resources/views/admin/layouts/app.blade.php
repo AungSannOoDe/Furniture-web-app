@@ -70,6 +70,10 @@
                                 <i class="fa-solid fa-envelope"></i>Contacts
 
                             </a>
+                            <a class="nav-link" href="{{route('admin#add#details')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                 Add details
+                            </a>
                             <a  class="nav-link collapsed" href="{{route('admin#users')}}">
                                 <i class="fa-solid fa-user"></i>
                                 Users</a>

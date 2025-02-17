@@ -64,7 +64,7 @@ Route::middleware([
             Route::get('edit/{id}',[ProductController::class,'editproduct'])->name('product#edit');
             Route::post('update',[ProductController::class,'updateProduct'])->name('admin#update#product');
             Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
-
+           Route::get('addDetails',[ProductController::class,'addDetails'])->name('admin#add#details');
         });
 
     });

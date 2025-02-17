@@ -19,6 +19,9 @@ class ProductController extends Controller
  product::where('id',$id)->delete();
  return back()->with(["deleteSuccess"=>"product Deleted Successfully"]);
         }
+        public function addDetails(){
+            return view('admin.product.Adddetails');
+        }
         public  function product(){
             $Categories=Category::get();
             $product= Product::select('products.*','categories.Cate_name as CatName')->when(request('key'),function($query){
