@@ -143,5 +143,6 @@
 
 </body>
 <script src="{{asset('js/layout.js')}}">
+    @stack('addDetails')
 </script>
 </html>

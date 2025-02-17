@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\OrderController;
@@ -65,6 +66,9 @@ Route::middleware([
             Route::post('update',[ProductController::class,'updateProduct'])->name('admin#update#product');
             Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
            Route::get('addDetails',[ProductController::class,'addDetails'])->name('admin#add#details');
+        });
+        Route::prefix('ajax')->group(function(){
+           Route::get('details/showtable',[AjaxController::class,'showtable'])->name('admin#show');
         });
 
     });

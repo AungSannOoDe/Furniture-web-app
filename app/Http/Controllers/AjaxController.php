@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Orderlist;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,11 @@ class AjaxController extends Controller
             $data=product::orderBy('created_at','desc')->get();
          }
         return $data;
+    }
+    public function  showtable(Request $request){
+        $Cate_id= $request->value;
+         $data=Product::where('Cate_id',$Cate_id)->get();
+         return $data;
     }
     public function removeCart(Request $request){
         Cart::where('user_id',Auth::user()->id)->where('pizza_id',$request->productId)->where('id',$request->orderId)->delete();

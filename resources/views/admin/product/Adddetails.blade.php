@@ -9,8 +9,9 @@
                         <h2 class="text-center">Choose Caregory</h2>
                     </div>
                     <div class="card-body">
-                         <select name="" id="" class="form-control">
+                         <select name="" id="detailsCate" class="form-control">
                             <option value="">Selected Category</option>
+                            <option value="1">apple</option>
                          </select>
                     </div>
                 </div>
@@ -29,22 +30,7 @@
 <th></th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-              <td><button class="btn btn-danger">Edit</button></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td><button class="btn btn-danger">Edit</button></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td><button class="btn btn-danger">Edit</button></td>
-                              </tr>
+                            <tbody id="detailsTable">
                             </tbody>
                           </table>
                     </div>
@@ -104,3 +90,6 @@
 
 
 @endsection
+@push('addDetails')
+    <script src="{{asset('js/adddetails.js')}}"></script>
+@endpush

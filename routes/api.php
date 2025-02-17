@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::prefix('user',function(){
+    Route('product/showtable',[RouteController::class,'showtable']);
+});
 Route::get('product/list',[RouteController::class,'productlist']);
 Route::get('Category/list',[RouteController::class,'Categorylist']);
 Route::get('users/list',[RouteController::class,'userlist']);

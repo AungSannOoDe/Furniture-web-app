@@ -21,6 +21,7 @@ class ProductController extends Controller
         }
         public function addDetails(){
             return view('admin.product.Adddetails');
+
         }
         public  function product(){
             $Categories=Category::get();
