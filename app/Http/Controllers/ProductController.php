@@ -24,6 +24,9 @@ class ProductController extends Controller
             return view('admin.product.Adddetails',compact('Categories'));
 
         }
+        public function addFormDetails(){
+            return('Hello');
+        }
         public  function product(){
             $Categories=Category::get();
             $product= Product::select('products.*','categories.Cate_name as CatName')->when(request('key'),function($query){

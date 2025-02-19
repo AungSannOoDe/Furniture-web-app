@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" href="{{asset('images/logo.png')}}" type="image/png">
+        @vite(['resources/css/app.css','resources/js/app.js'])
         <title>furniture</title>
     @stack('styles')
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -100,8 +102,11 @@
        <script src="{{asset('js/jquery.min.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src={{asset('js/datatables-simple-demo.js')}}></script>
+        <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @stack('scripts')
         @stack('addDetails')
         @stack('formlayoutes')
+        @stack('formadd')
     </body>
 </html>

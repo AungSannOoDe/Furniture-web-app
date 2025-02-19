@@ -66,11 +66,12 @@ Route::middleware([
             Route::post('update',[ProductController::class,'updateProduct'])->name('admin#update#product');
             Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
            Route::get('addDetails',[ProductController::class,'addDetails'])->name('admin#add#details');
-
+           Route::post('addFormDetails',[ProductController::class,'addFormDetails'])->name('admin#FormAddDetails');
         });
         Route::prefix('ajax')->group(function(){
            Route::get('details/showtable',[AjaxController::class,'showtable'])->name('admin#show');
            Route::get('details/showForm',[AjaxController::class,'showForm'])->name('admin#show#form');
+           Route::post('formadd',[AjaxController::class,'formadd'])->name('admin#form#add');
         });
 
     });

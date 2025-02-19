@@ -57,49 +57,6 @@
     </div>
 {{-- add details for product --}}
   <section class="cotainer" id="FormContainer">
-   <h2 class="text-center">Add Details for product</h2>
- <div class="row mb-3">
-    <div class="col-10 mx-auto">
-        <div class="card">
-            <div class="card-body mb-3">
-                <form action="">
-                    <div class="form-group">
-                        <label for="width">Width</label>
-                        <input type="number" class="form-control" id="width"  placeholder="Enter Width..">
-                      </div>
-                      <div class="form-group mt-3">
-                        <label for="heigth">Height</label>
-                        <input type="number" class="form-control" id="heigth"  placeholder="Enter Width..">
-                      </div>
-                      <div class="form-group mt-3">
-                        <label for="model">Model Number</label>
-                        <input type="text" class="form-control" id="heigth"  placeholder="Enter Model..">
-                      </div>
-                      <div class="form-group mt-3">
-                        <label for="warr">Warrantly</label>
-                        <input type="number" class="form-control" id="warr"  placeholder="Enter Warrantly..">
-                      </div>
-                      <div class="form-group mt-3">
-                        <label for="m1">Material 1</label>
-                        <input type="text" class="form-control" id="m1"  placeholder="Enter Material 1..">
-                      </div>
-                      <div class="form-group mt-3">
-                        <label for="m2">Material 2</label>
-                        <input type="text" class="form-control" id="m2"  placeholder="Enter Material 2..">
-                      </div>
-                      <div class="form-group mt-3">
-                        <label for="coun">Country</label>
-                        <input type="text" class="form-control" id="coun"  placeholder="Enter Country..">
-                      </div>
-                      <div class="mt-3 ">
-                        <button class="btn btn-primary block w-100">Add Details</button>
-                      </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
- </div>
   </section>
 
 </div>
@@ -111,4 +68,7 @@
 @endpush
 @push('formlayoutes')
     <script src="{{asset('js/formDetails.js')}}"></script>
+@endpush
+@push('formadd')
+    <script src="{{asset('js/formadd.js')}}"></script>
 @endpush

@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Orderlist;
 use Illuminate\Http\Request;
+use App\Models\productDetails;
 
 class AjaxController extends Controller
 {
@@ -32,6 +33,29 @@ class AjaxController extends Controller
     }
     public function removeCart(Request $request){
         Cart::where('user_id',Auth::user()->id)->where('pizza_id',$request->productId)->where('id',$request->orderId)->delete();
+    }
+    public function formadd(Request $request){
+        logger($request);
+        $raw=$this->getFormad($request);
+        productDetails::create($raw);
+        $response=[
+            'message'=>'Add Formad Successfully',
+            'status'=>'success'
+           ];
+           return response()->json($response,200);
+    }
+    private function getFormad($request){
+        return[
+            'product_id'=>$request->id,
+            'width'=>$request->width,
+            'height'=>$request->height,
+            'ModelNumber'=>$request->model,
+            'Warranty'=>$request->warr,
+            'Material_1'=>$request->m1,
+            'Material_2'=>$request->m2,
+            'Country'=>$request->coun
+
+        ];
     }
     public function OrderList(Request $request){
         $total=0;
