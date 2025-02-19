@@ -66,9 +66,11 @@ Route::middleware([
             Route::post('update',[ProductController::class,'updateProduct'])->name('admin#update#product');
             Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
            Route::get('addDetails',[ProductController::class,'addDetails'])->name('admin#add#details');
+
         });
         Route::prefix('ajax')->group(function(){
            Route::get('details/showtable',[AjaxController::class,'showtable'])->name('admin#show');
+           Route::get('details/showForm',[AjaxController::class,'showForm'])->name('admin#show#form');
         });
 
     });

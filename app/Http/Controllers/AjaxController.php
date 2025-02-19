@@ -25,6 +25,11 @@ class AjaxController extends Controller
          $data=Product::where('Cate_id',$Cate_id)->get();
          return $data;
     }
+    public function showForm(Request $request){
+        $product_id=$request->id;
+        $data = Product::where('id', $product_id)->get();
+        return $data;
+    }
     public function removeCart(Request $request){
         Cart::where('user_id',Auth::user()->id)->where('pizza_id',$request->productId)->where('id',$request->orderId)->delete();
     }

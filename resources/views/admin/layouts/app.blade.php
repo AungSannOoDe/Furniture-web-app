@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <link rel="icon" href="{{asset('images/logo.png')}}" type="image/png">
         <title>furniture</title>
+    @stack('styles')
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href= {{asset('css/styles.css')}} rel="stylesheet" />
@@ -101,5 +102,6 @@
         <script src={{asset('js/datatables-simple-demo.js')}}></script>
         @stack('scripts')
         @stack('addDetails')
+        @stack('formlayoutes')
     </body>
 </html>

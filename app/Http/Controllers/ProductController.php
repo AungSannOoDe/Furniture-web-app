@@ -20,7 +20,8 @@ class ProductController extends Controller
  return back()->with(["deleteSuccess"=>"product Deleted Successfully"]);
         }
         public function addDetails(){
-            return view('admin.product.Adddetails');
+             $Categories=Category::get();
+            return view('admin.product.Adddetails',compact('Categories'));
 
         }
         public  function product(){
