@@ -44,43 +44,33 @@
                 </div>
                 {{-- cart items --}}
                <section>
-                <div class="flex justify-between mt-5">
-                    <div>
-                        <img src="{{asset('images/sofa.png')}}" alt="" width="90px" height="90px">
+                @if (count($Carts)==0)
+                    <h2 class="text-center text-red-500 mt-5">There is no Cart Data</h2>
+                @else
+                    @foreach ($Carts as $cart )
+                    <div class="flex justify-between mt-5">
+                        <div>
+                            <img src="{{asset('storage/'.$cart->image)}}" alt="" width="90px" height="90px">
+                        </div>
+                        <div class="self-center">
+                            <h1 class="text-xl font-bold tracking-wider">{{$cart->name}}</h1>
+                             <div class="flex justify-center space-x-5 text-xs">
+                                <p>{{$cart->qty}}</p>
+                                <p>X</p>
+                                <p class="text-yellow-600">{{$cart->price}} kyats</p>
+                             </div>
+                        </div>
+                        <div class="self-center">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
                     </div>
-                    <div class="self-center">
-                        <h1 class="text-xl font-bold tracking-wider"> Asagaba Sofa</h1>
-                         <div class="flex justify-center space-x-5 text-xs">
-                            <p>1</p>
-                            <p>X</p>
-                            <p class="text-yellow-600">140000 kyats</p>
-                         </div>
-                    </div>
-                    <div class="self-center">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
-                <div class="flex justify-between mt-5">
-                    <div>
-                        <img src="{{asset('images/product2.png')}}" alt="" width="90px" height="90px">
-                    </div>
-                    <div class="self-center">
-                        <h1 class="text-xl font-bold tracking-wider"> Asagaba Sofa</h1>
-                         <div class="flex justify-center space-x-5 text-xs">
-                            <p>1</p>
-                            <p>X</p>
-                            <p class="text-yellow-600">140000 kyats</p>
-                         </div>
-                    </div>
-                    <div class="self-center">
-                        <i class="fa-solid fa-trash"></i>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
                </section>
                <div  class="mt-14">
                   <div class="flex justify-start   space-x-32">
                         <h1 class="text-md font-bold tracking-wider">Total</h1>
-                        <h1 class="text-md text-yellow-600 font-bold tracking-wider ml-5">280000 kyats</h1>
+                        <h1 class="text-md text-yellow-600 font-bold tracking-wider ml-5"></h1>
                   </div>
                </div>
                <div class="mt-8">
@@ -103,7 +93,7 @@
                 <div class="flex justify-center">
                     <div class="w-[50px] h-[50px] rounded-full bg-yellow-600 "></div>
                 </div>
-              <h2 class="text-center mt-3">Aung Sann Oo</h2>
+              <h2 class="text-center mt-3">{{Auth::user()->name}}</h2>
                <div class="ml-8">
                 <button class="bg-yellow-600 px-2 py-1  text-white  text-center rounded-md ">log out</button>
                </div>
@@ -142,7 +132,8 @@
       </footer>
 
 </body>
+
 <script src="{{asset('js/layout.js')}}">
-   
+   @stack('Ordering')
 </script>
 </html>

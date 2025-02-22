@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" href="{{asset('images/logo.png')}}" type="image/png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         @vite(['resources/css/app.css','resources/js/app.js'])
         <title>furniture</title>
     @stack('styles')
@@ -73,6 +74,10 @@
                                 <i class="fa-solid fa-envelope"></i>Contacts
 
                             </a>
+                            <a href="{{route('admin#details#list')}}" class="nav-link collapsed" >
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                List Details
+                            </a>
                             <a class="nav-link" href="{{route('admin#add#details')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                  Add details
@@ -104,6 +109,8 @@
         <script src={{asset('js/datatables-simple-demo.js')}}></script>
         <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
         @stack('scripts')
         @stack('addDetails')
         @stack('formlayoutes')

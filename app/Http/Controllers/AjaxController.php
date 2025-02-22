@@ -11,7 +11,7 @@ use App\Models\productDetails;
 
 class AjaxController extends Controller
 {
-    public function pizzalist(Request $request){
+    public function list(Request $request){
         logger($request);
         if($request->status=="asc"){
             $data=product::orderBy('created_at','asc')->get();

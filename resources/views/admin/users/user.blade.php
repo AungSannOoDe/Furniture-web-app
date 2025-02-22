@@ -81,9 +81,7 @@
         </td>
         <td>
             <a href="{{route('admin#details',['id'=>encrypt($adm->id)])}}" class="btn btn-success">View Details </a>
-            <a href="" class="btn btn-dark">Message</a>
             <a href="{{route('admin#user#delete', $adm->id)}}" class="btn btn-danger">Delete</a>
-
         </td>
     </tr>
     @endforeach

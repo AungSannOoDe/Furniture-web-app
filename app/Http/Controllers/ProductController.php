@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\productDetails;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
     public function productdet($id){
-
-        $products=product::get()->where('id',$id);
+        $realid=decrypt($id);
+        $products=product::get()->where('id',$realid);
         return view('admin.product.details',compact('products'));
         }
         public function deleteproduct($id){
@@ -26,6 +27,10 @@ class ProductController extends Controller
         }
         public function addFormDetails(){
             return('Hello');
+        }
+        public function FormDetails(){
+            $details=productDetails::get();
+            return view("admin.product.DetailsList",compact('details'));
         }
         public  function product(){
             $Categories=Category::get();

@@ -47,7 +47,11 @@ class="bg-[url('../images/product5.png')] w-full h-[450px] opacity-90 bg-no-repe
         </div>
         <div class="flex justify-center">
             <p class="self-center">short by</p>
-            <input type="text" class="w-100 h-10 outline-0">
+            <select name="" id="sortingOption" class="w-100 h-10 outline-0">
+                <option value="">Choose Options..</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
         </div>
     </div>
   </div>
@@ -56,225 +60,44 @@ class="bg-[url('../images/product5.png')] w-full h-[450px] opacity-90 bg-no-repe
 @endsection
 @section('Content')
 <section class="section-container mt-8">
-    <div class="w-full   md:grid grid-cols-4  gap-4 p-5 md:p-0">
-      <div >
-        <div class="relative">
-          <img src="../images/product2.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">-30%</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Syltherine</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
 
-        <img src="../images/product4.png" class="card-image" alt="">
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">levsioa</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
+       @if (count($products)==0)
+           <h1 class="text-red-500 text-center text-3xl">There is no products</h1>
+       @else
+       <div class="w-full   md:grid grid-cols-4  gap-4 p-5 md:p-0">
+       @foreach ( $products as $product)
+       <div class="sm:mt-4 mt-0 cursor-pointer" id="myList" >
+        <input type="hidden" name="" value="{{Auth::user()->id}}" id="userId">
+        <input type="hidden" name="" value="{{$product->id}}" id="productId">
+        <input type="hidden" name="" value="{{$product->image}}" id="imageName">
+        <input type="hidden" name="" value="{{$product->name}}" id="Name">
+        <input type="hidden" name="" value="{{$product->price}}" id="Price">
+        <input type="hidden" name="" value="1" id="qty">
         <div class="relative">
-          <img src="../images/product5.png" class="card-image" alt="">
+          <img src="{{asset('storage/'.$product->image)}}" class="card-image" alt="">
           <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">-50%</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">lolito</h1>
-          <p class="text-neutral-400">Outdoor bar table and stool</p>
-          <div class="flex justify-between">
-            <p>Rp7.00000</p>
-            <del class="text-neutral-400">Rp 14.00000 </del>
-          </div>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product8.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-emerald-400  pt-4 pl-3 w-14 h-14 rounded-full">
             <p class="text-white">New</p>
      </div>
         </div>
         <div class="product-card">
-          <h1 class="text-2xl font-bold">Grifio</h1>
-          <p class="text-neutral-400">Night lamp</p>
-          <p>Rp 2.500.000</p>
+            <div class="flex justify-between">
+                <div>
+                 <h1 class="text-2xl font-bold">{{$product->name}}</h1>
+                 <p class="text-neutral-400">{{$product->Cate_id}}</p>
+                 <p>{{$product->price}} kyats</p>
+                </div>
+                <div class="self-center">
+                   <a class="border  border-slate-400 px-2 py-3  hover:bg-slate-400 rounded-lg text-white transition-all duration-150 " id="DCart"> Cart</a>
+                   <a class="border  border-slate-400 px-2 py-3  hover:bg-slate-400 rounded-lg text-white transition-all duration-150 " href="{{route('user#singleproduct',encrypt($product->id))}}">Details</a>
+                </div>
+                             </div>
        </div>
        </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product8.png" class="card-image" alt="">
-
-        </div>
-
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Mugg</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/products1.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-emerald-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">New</p>
-     </div>
-        </div>
-
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Syltherine</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product8.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
-                 <p class="text-white">-50%</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Syltherine</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product8.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-emerald-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">New</p>
-     </div>
-        </div>
-
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Syltherine</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div >
-        <div class="relative">
-          <img src="../images/product2.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">-30%</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Syltherine</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-
-        <img src="../images/product4.png" class="card-image" alt="">
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">levsioa</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product5.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">-50%</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">lolito</h1>
-          <p class="text-neutral-400">Outdoor bar table and stool</p>
-          <div class="flex justify-between">
-            <p>Rp7.00000</p>
-            <del class="text-neutral-400">Rp 14.00000 </del>
-          </div>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product8.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-emerald-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">New</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Grifio</h1>
-          <p class="text-neutral-400">Night lamp</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div >
-        <div class="relative">
-          <img src="../images/product2.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">-30%</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Syltherine</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-
-        <img src="../images/product4.png" class="card-image" alt="">
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">levsioa</h1>
-          <p class="text-neutral-400">Stylish cafe chair</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product5.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">-50%</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">lolito</h1>
-          <p class="text-neutral-400">Outdoor bar table and stool</p>
-          <div class="flex justify-between">
-            <p>Rp7.00000</p>
-            <del class="text-neutral-400">Rp 14.00000 </del>
-          </div>
-       </div>
-       </div>
-       <div class="sm:mt-4 md:mt-0">
-        <div class="relative">
-          <img src="../images/product8.png" class="card-image" alt="">
-          <div class="absolute top-3 right-8 bg-emerald-400  pt-4 pl-3 w-14 h-14 rounded-full">
-            <p class="text-white">New</p>
-     </div>
-        </div>
-        <div class="product-card">
-          <h1 class="text-2xl font-bold">Grifio</h1>
-          <p class="text-neutral-400">Night lamp</p>
-          <p>Rp 2.500.000</p>
-       </div>
-       </div>
-       </div>
-
+       @endforeach
     </div>
-    <!-- paginate -->
-        <div class="flex justify-center mt-8">
-         <div class="space-x-8 space-y-3">
-            <button class="btn">1</button>
-            <button class="btn">2</button>
-            <button class="btn">3</button>
-            <button class="btn w-20">Next</button>
-         </div>
-        </div>
+       @endif
           </section>
 @endsection
+@push('Ordering')
+<script src="{{asset('js/ADproduct.js')}}"></script>
+@endpush

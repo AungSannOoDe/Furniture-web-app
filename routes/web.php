@@ -14,10 +14,19 @@ use App\Http\Controllers\CategoryController;
 Route::redirect('/', '/user/home');
 Route::get('userloginPage',[AuthController::class,'userLogin'])->name('user#login');
 Route::get('userregisterPage',[AuthController::class,'userRegister'])->name('user#register');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+
+
+});
 Route::prefix('user')->group(function(){
     Route::get('home',[userController::class,'index'])->name('user#index');
     Route::get('product',[userController::class,'product'])->name('user#product');
-    Route::get('singleProduct',[userController::class,'singleProduct'])->name('user#singleproduct');
+    Route::get('singleProduct/{id}',[userController::class,'singleProduct'])->name('user#singleproduct');
     Route::get('billings',[userController::class,'billings'])->name('user#billings');
     Route::get('Contact',[userController::class,'Contact'])->name('user#Contact');
     Route::get('about',[userController::class,'about'])->name('user#about');
@@ -67,11 +76,14 @@ Route::middleware([
             Route::get('search',[ProductController::class,'searchName'])->name('admin#product#search');
            Route::get('addDetails',[ProductController::class,'addDetails'])->name('admin#add#details');
            Route::post('addFormDetails',[ProductController::class,'addFormDetails'])->name('admin#FormAddDetails');
+           Route::get('FormDetails',[ProductController::class,'FormDetails'])->name('admin#details#list');
         });
         Route::prefix('ajax')->group(function(){
            Route::get('details/showtable',[AjaxController::class,'showtable'])->name('admin#show');
            Route::get('details/showForm',[AjaxController::class,'showForm'])->name('admin#show#form');
            Route::post('formadd',[AjaxController::class,'formadd'])->name('admin#form#add');
+           Route::get('list',[AjaxController::class,'list'])->name('admin#product#list');
+           Route::get('addtoCart',[AjaxController::class,'addtoCart'])->name('admin#product#addCart');
         });
 
     });
