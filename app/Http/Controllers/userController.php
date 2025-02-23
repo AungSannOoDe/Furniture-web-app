@@ -53,6 +53,8 @@ class userController extends Controller
         return view('user.details',compact(['Carts','profile']));
      }
 public function cart(){
-    return view('user.cart');
+    $id=Auth::user()->id;
+   $Cartlist=Cart::where('user_id',$id)->get();
+    return view('user.cart',compact('Cartlist'));
 }
 }

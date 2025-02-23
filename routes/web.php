@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\CategoryController;
 
-Route::redirect('/', '/user/home');
+Route::redirect('/', '/userloginPage');
 Route::get('userloginPage',[AuthController::class,'userLogin'])->name('user#login');
 Route::get('userregisterPage',[AuthController::class,'userRegister'])->name('user#register');
 
@@ -20,19 +20,18 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-
-
+    Route::prefix('user')->group(function(){
+        Route::get('home',[userController::class,'index'])->name('user#index');
+        Route::get('product',[userController::class,'product'])->name('user#product');
+        Route::get('singleProduct/{id}',[userController::class,'singleProduct'])->name('user#singleproduct');
+        Route::get('billings',[userController::class,'billings'])->name('user#billings');
+        Route::get('Contact',[userController::class,'Contact'])->name('user#Contact');
+        Route::get('about',[userController::class,'about'])->name('user#about');
+        Route::get('details',[userController::class,'details'])->name('user#details');
+        Route::get('cart',[userController::class,'cart'])->name('user#cart');
+    });
 });
-Route::prefix('user')->group(function(){
-    Route::get('home',[userController::class,'index'])->name('user#index');
-    Route::get('product',[userController::class,'product'])->name('user#product');
-    Route::get('singleProduct/{id}',[userController::class,'singleProduct'])->name('user#singleproduct');
-    Route::get('billings',[userController::class,'billings'])->name('user#billings');
-    Route::get('Contact',[userController::class,'Contact'])->name('user#Contact');
-    Route::get('about',[userController::class,'about'])->name('user#about');
-    Route::get('details',[userController::class,'details'])->name('user#details');
-    Route::get('cart',[userController::class,'cart'])->name('user#cart');
-});
+
 
 
 
@@ -45,7 +44,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::middleware([AdminAuth::class])->group(function () {
-        Route::get('dashboard',[AuthController::class,'dashboard'])->name('admin#dashboard');
+        Route::get('home',[AuthController::class,'dashboard'])->name('admin#dashboard');
         Route::prefix('profile')->group(function(){
             Route::get('only',[profileController::class,'profile'])->name('admin#profile');
             Route::get('adminChangepassword',[profileController::class,'changePassword'])->name('admin#changepassword');

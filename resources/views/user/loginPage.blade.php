@@ -21,14 +21,25 @@
                 <div class="px-6">
                     <h1 class="text-3xl font-bold  text-yellow-600">Welcome back to Furino</h1>
                     <p class="text-xs font-thin text-slate-400 mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis sed commodi rem aliquam obcaecati necessitatibus quas ut doloremque natus sint.</p>
-                    <form action="" method="post">
+                    <form action="{{route('login')}}" method="post">
                         <div class="mt-8">
+                            @csrf
                             <label for="email" class="block text-sm font-medium text-yellow-600">Email</label>
-                            <input type="email" name="email" id="email" class="w-full px-3 py-2 outline-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600" required>
+                            <input type="text" name="email" id="email" class="w-full px-3 py-2 outline-0 border {{
+                              $errors->has('email') ? 'border-red-500' :'border-gray-300'
+                            }} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600" >
+                               @error("email")
+                                   <small class="text-red-500">{{$message}}</small>
+                               @enderror
                         </div>
                         <div class="mt-8">
                             <label for="password" class="block text-sm font-medium text-yellow-600">Password</label>
-                            <input type="password" name="password" id="password" class="w-full outline-0 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600" required>
+                            <input type="password" name="password" id="password" class="w-full outline-0 px-3 py-2 border border-gray-300 @error("password")
+                                border-red-500
+                            @enderror rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600">
+                            @error("password")
+                            <small class="text-red-500">{{$message}}</small>
+                        @enderror
                         </div>
                         <div class="mt-12">
                             <button type="submit" class="w-full  text-yellow-600 py-2 bg-white  rounded-md hover:bg-yellow-600 hover:text-white border border-yellow-600 transition-all duration-300">Login</button>

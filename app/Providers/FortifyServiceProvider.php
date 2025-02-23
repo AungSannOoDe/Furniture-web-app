@@ -33,6 +33,8 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
+
+
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
@@ -42,5 +44,31 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+        Fortify::authenticateUsing(function (Request $request) {
+            $credentials = $request->validate([
+                'email' => 'required|email|exists:users,email', // Ensure the email is registered
+                'password' =>  ['required',
+                'min:8',                // Minimum 8 characters
+                'regex:/[a-z]/',        // At least one lowercase letter
+                'regex:/[A-Z]/',        // At least one uppercase letter
+                'regex:/[0-9]/',        // At least one number
+                'regex:/[@$!%*?&]/',] , // Password must be strong
+            ], [
+                'email.required' => 'The email field is required.',
+                'email.email' => 'Please enter a valid email address.',
+                'email.exists' => 'This email is not registered in our system.',
+                'password.required' => 'The password field is required.',
+                'password.min' => 'Password must be at least 8 characters long.',
+                'password.regex' => 'Password must include uppercase, lowercase, number, and special character.',
+            ]);
+
+            if (!Auth::attempt($credentials)) {
+                throw ValidationException::withMessages([
+                    'email' => ['These credentials do not match our records.'],
+                ]);
+            }
+            return Auth::user();
+        });
+
     }
 }

@@ -38,18 +38,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>
-             <img src="../images/sofa.png" class="w-24 h-24 " alt="">
-            </th>
-            <th class="px-4 py-4 text-slate-400 font-normal">Asaraph</th>
-            <th class="font-normal">12000 kyats</th>
-            <th class="font-normal">3</th>
-            <th class="font-normal">36000 kyats</th>
-            <th>
-              <i class="fa-solid fa-trash text-orange-300"></i>
-            </th>
-          </tr>
+            @if (count($Cartlist)==0)
+                <tr>
+                    <th class="text-red-500 text-3xl" colspan="5">There is no Cart Data</th>
+                </tr>
+            @else
+                @foreach ($Cartlist as $cart )
+                <tr>
+                    <th>
+                     <img src="../images/sofa.png" class="w-24 h-24 " alt="">
+                    </th>
+                    <th class="px-4 py-4 text-slate-400 font-normal">{{$cart->name}}</th>
+                    <th class="font-normal">{{$cart->price}} kyats</th>
+                    <th class="font-normal">{{$cart->qty}}</th>
+                    <th class="font-normal">36000 kyats</th>
+                    <th>
+                      <i class="fa-solid fa-trash text-orange-300"></i>
+                    </th>
+                  </tr>
+                @endforeach
+            @endif
+
         </tbody>
 
 
@@ -68,12 +77,7 @@
       <div class="text-center mt-8">
         <button class="border border-solid border-slate-400 px-3 py-3 rounded-lg transition-all duration-100 hover:bg-slate-400 hover:text-white">Check Out</button>
       </div>
-
         </div>
-
-
-
-
       </div>
     </div>
     </div>

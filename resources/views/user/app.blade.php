@@ -76,7 +76,7 @@
                <div class="mt-8">
                 <hr>
                 <div class="mt-8  flex justify-center space-x-14">
-      <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Cart</button>
+      <a class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300" href="{{route('userCart')}}">Cart</a>
       <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Checkout</button>
       <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Details</button>
                 </div>
