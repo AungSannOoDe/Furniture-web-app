@@ -33,6 +33,7 @@
       <small class="text-danger">{{ $message}}</small>
   @enderror
     </div>
+    <input type="hidden" value="admin" name="role">
     <div class="form-group">
         <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
       <input type="password" class="form-control rounded-left @error('password_confirmation') is-invalid  @enderror " placeholder="Confirmation Password...." name="password_confirmation" >

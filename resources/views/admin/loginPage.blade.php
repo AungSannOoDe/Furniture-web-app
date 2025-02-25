@@ -5,10 +5,12 @@
         <div class="login-wrap p-4 p-md-5">
     <div class="d-flex">
         <div class="w-100">
+            <p onclick="load.history()">back</p>
             <h3 class="mb-4">admin log In</h3>
         </div>
     </div>
             <form action="{{route('login')}}"  method="POST" class="login-form">
+
                 @csrf
         <div class="form-group">
             <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-envelope"></span></div>

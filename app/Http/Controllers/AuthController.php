@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Orderlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 
@@ -13,11 +15,29 @@ class AuthController extends Controller
     public function loginPage(){
         return view('admin.loginPage');
     }
+    public function first(){
+        $product=Product::get();
+        return view('FirstShowing.slideShowing',compact('product'));
+    }
+    public function Second(){
+        return view('FirstShowing.About');
+    }
+    public function third(){
+        return view('FirstShowing.Contact');
+    }
     public function registerPage(){
         return view('admin.RegisterPage');
     }
     public function dashboard(){
         return view('admin.Dashboard.admindashboard');
+    }
+    public function gotodashboard(){
+        if(Auth::user()->role==="admin"){
+            return redirect()->route('admin#dashboard');
+        }
+        else{
+  return redirect()->route('user#index');
+        }
     }
     public function viewusers(){
         $admin=User::when(request('key'),function($query){

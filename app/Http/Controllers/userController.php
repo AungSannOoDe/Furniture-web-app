@@ -10,10 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class userController extends Controller
 {
     public function index(){
+       if ((Auth::user())) {
         $id=Auth::user()->id;
-         $Carts=Cart::where('user_id',$id)->get();
-          $profile=Auth::user()->id;
-        return view('user.index',compact(['Carts','profile']));
+        $Carts=Cart::where('user_id',$id)->get();
+         $profile=Auth::user()->id;
+         $products=Product::get();
+       return view('user.index',compact(['Carts','profile','products']));
+       }
+       else{
+        return view('user.index');
+       }
      }
      public function product(){
         $id=Auth::user()->id;

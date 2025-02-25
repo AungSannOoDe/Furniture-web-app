@@ -9,7 +9,7 @@
 </head>
 <body>
     <section class="section-container flex justify-center items-center h-screen">
-        <div class="w-full h-[700px]  bg-white  shadow-xl rounded-lg mt-3 flex justify-center">
+        <div class="w-full h-[790px]  bg-white  shadow-xl rounded-lg mt-3 flex justify-center">
                 <div class="w-full flex justify-center px-6 py-16">
                     <img src="{{asset('images/furniture.png')}}" alt="" class=" w-full h-[400px] object-cover ">
                 </div>
@@ -18,39 +18,51 @@
                         <h1 class="text-3xl font-bold  text-yellow-600">Welcome  to Furino</h1>
                         <form action="{{route('register')}}" method="post">
                             @csrf
-                            <div class="mt-3">
+                            <div class="mt-2">
                                 <label for="name" class="block text-sm font-medium text-yellow-600">Name</label>
-                                <input type="text" name="name" id="name" class="w-full px-3 py-2 outline-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600">
-                                @error("name")
-                                <small class="text-red-500">{{$message}}</small>
-                                @enderror
-                            </div>
-                            <div class="mt-3">
-                                <label for="email" class="block text-sm font-medium text-yellow-600">Email</label>
-                            <input type="text" name="email" id="email" class="w-full px-3 py-2 outline-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600">
-                            @error("email")
-                            <small class="text-red-500">{{$message}}</small>
+                                <input type="text"   name="name" id="name" class="w-full px-3 py-2 outline-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600" >
+                                @error('name')
+                                <small class="text-danger">{{ $message}}</small>
                             @enderror
-                        </div>
-                            <div class="mt-3">
-                                <label for="phone" class="block text-sm font-medium text-yellow-600">phone</label>
-                                <input type="text" name="email" id="email" class="w-full px-3 py-2 outline-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600">
-                                @error("phone")
-                                <small class="text-red-500">{{$message}}</small>
-                                @enderror
-                            </div>
-                            <div class="mt-3">
-                                <label for="password" class="block text-sm font-medium text-yellow-600">Password</label>
-                                <input type="password" name="password" id="password" class="w-full outline-0 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600">
-                                @error("password")
-                                <small class="text-red-500">{{$message}}</small>
-                                @enderror
-                            </div>
-
-                            <div class="mt-8">
-                                <button type="submit" class="w-full  text-yellow-600 py-2 bg-white  rounded-md hover:bg-yellow-600 hover:text-white border border-yellow-600 transition-all duration-300">Sign Up</button>
+                            <input type="hidden" value="user" name="role">
                             </div>
                             <div class="mt-2">
+                                <label for="email" class="block text-sm font-medium text-yellow-600">Email</label>
+                                <input type="text" name="email" id="email"  class="w-full px-3 py-2 outline-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600" >
+                                @error('email')
+                                <small class="text-red-500">{{ $message}}</small>
+                            @enderror
+                            </div>
+                            <input type="hidden" value="user">
+                            <div class="mt-2">
+                                <label for="phone" class="block text-sm font-medium text-yellow-600">phone</label>
+                                <input type="text" name="phone" id="phone"  class="w-full px-3 py-2 outline-0 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600" >
+                                @error('phone')
+                                <small class="text-red-500">{{ $message}}</small>
+                            @enderror
+                            </div>
+                            <div class="mt-2">
+                                <label for="password" class="block text-sm font-medium text-yellow-600">Password</label>
+                                <input type="password" name="password" id="password" class="w-full outline-0 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600">
+                                @error('password')
+                                <small class="text-red-500">{{ $message}}</small>
+                            @enderror
+                            </div>
+                            <div class="mt-2">
+                                <label for="password" class="block text-sm font-medium text-yellow-600"> Confirmation Password</label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="w-full outline-0 px-3 py-2 border  rounded-md shadow-sm focus:outline-none focus:ring focus:ring-yellow-600 focus:border-yellow-600  {{$errors->has('password_confirmation')? 'border-red-500':'border-gray-300'}}">
+                                @error('conpass')
+                                <small class="text-red-500">{{ $message}}</small>
+                            @enderror
+                            </div>
+                            <input type="checkbox" name="terms">
+                            @error('terms')
+                                <small class="text-danger">{{ $message}}</small>
+                            @enderror
+                            <div class="mt-5">
+                                <button type="submit" class="w-full  text-yellow-600 py-2 bg-white  rounded-md hover:bg-yellow-600 hover:text-white border border-yellow-600 transition-all duration-300">Sign Up</button>
+                            </div>
+                            <div class="mt-3">
                                 <label for="" class="text-yellow-600">Do yo have account? </label><a href="{{route('user#login')}}"> login</a>
                               </div>
                               <a class="ml-20 cursor-pointer" href="{{route('user#index')}}" >back</a>

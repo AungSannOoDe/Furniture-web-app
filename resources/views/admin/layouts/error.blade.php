@@ -19,9 +19,9 @@
                             <div class="col-lg-6">
                                 <div class="text-center mt-4">
                                     @yield('Content')
-                                    <a href="{{route('admin#dashboard')}}">
+                                    <a onclick="load.history()">
                                         <i class="fas fa-arrow-left me-1"></i>
-                                        Return to Dashboard
+                                        Return back
                                     </a>
                                 </div>
                             </div>

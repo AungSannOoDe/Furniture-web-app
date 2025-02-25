@@ -18,6 +18,11 @@ class UserAuth
         if(Auth::user()->role !=="user"){
             return  abort(404);
                  }
+             if(!empty(Auth::user())){
+                if(url()->current()==route('admin#loginPage')||url()->current()==route('admin#register')){
+                    return back();
+                }
+            }
         return $next($request);
     }
 }

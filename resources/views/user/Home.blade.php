@@ -1,4 +1,3 @@
-
 @extends('user.app')
 @section('Content')
 <section class="h-[600px] bg-cover bg-center bg-no-repeat body-font font-montserrat  " style="background-image: url(../images/home.png);">
@@ -208,5 +207,5 @@
        </div>
        </div>
   </section >
-  @endsection
 
+@endsection

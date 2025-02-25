@@ -7,14 +7,19 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\CategoryController;
 
-Route::redirect('/', '/userloginPage');
+Route::redirect('/', '/firstSee');
 Route::get('userloginPage',[AuthController::class,'userLogin'])->name('user#login');
 Route::get('userregisterPage',[AuthController::class,'userRegister'])->name('user#register');
-
+Route::get('dashboard',[AuthController::class,'gotodashboard'])->name('dash');
+Route::get('firstSee',[AuthController::class,'first'])->name('user#first#Slide');
+Route::get('SecondSee',[AuthController::class,'Second'])->name('user#Second#Slide');
+Route::get('thirdSee',[AuthController::class,'third'])->name('user#third#Slide');
+Route::post('addContact',[ContactController::class,'addCon'])->name('user#add#review');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -44,7 +49,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::middleware([AdminAuth::class])->group(function () {
-        Route::get('home',[AuthController::class,'dashboard'])->name('admin#dashboard');
+        Route::get('admin/dashboard',[AuthController::class,'dashboard'])->name('admin#dashboard');
         Route::prefix('profile')->group(function(){
             Route::get('only',[profileController::class,'profile'])->name('admin#profile');
             Route::get('adminChangepassword',[profileController::class,'changePassword'])->name('admin#changepassword');

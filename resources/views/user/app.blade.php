@@ -13,7 +13,15 @@
         <div class="max-w-7xl mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ">
           <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 font-poppins">
             <img src="{{asset('images/logo.png')}}" alt="" width="50px" height="32px">
-            <span > <a href="{{route('admin#loginPage')}}" class="ml-3 text-xl">Furnio</a> </span>
+
+            <span >
+                @if (Auth::user()->role=="user")
+                <a  class="ml-3 text-xl">Furnio</a>
+                @else
+                <a href="{{route('admin#loginPage')}}" class="ml-3 text-xl">Furnio</a>
+                @endif
+
+                 </span>
           </a>
           <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base gap-x-6 justify-center font-medium">
             <a class="mr-5 hover:text-gray-900 cursor-pointer " href="{{route('user#index')}}">Home</a>
@@ -22,12 +30,12 @@
             <a class="mr-5 hover:text-gray-900 cursor-pointer" href="{{route('user#Contact')}}">Contact us</a>
           </nav>
          <div class="space-x-5">
-          <a href="{{route('user#cart')}}" class="btnCart">
-            <i class="fa-solid fa-cart-shopping "></i>
-            </a>
-            <a href="{{route('user#login')}}" class="btnprofile">
-                <i class="fa-solid fa-user  "></i>
-            </a>
+            <a href="" class="btnCart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <a href="" class="btnprofile">
+                    <i class="fa-solid fa-user"></i>
+                </a>
 
          </div>
         </div>
@@ -76,7 +84,7 @@
                <div class="mt-8">
                 <hr>
                 <div class="mt-8  flex justify-center space-x-14">
-      <a class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300" href="{{route('userCart')}}">Cart</a>
+      <a class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Cart</a>
       <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Checkout</button>
       <button class="border px-3 py-2 border-slate-400 rounded-lg hover:bg-slate-400 hover:text-white transition-all duration-300">Details</button>
                 </div>
@@ -95,7 +103,11 @@
                 </div>
               <h2 class="text-center mt-3">{{Auth::user()->name}}</h2>
                <div class="ml-8">
-                <button class="bg-yellow-600 px-2 py-1  text-white  text-center rounded-md ">log out</button>
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <button type="submit" class="bg-yellow-600 px-2 py-1  text-white  text-center rounded-md hover:bg-white hover:border-yellow-600 duration-150 transition-all ">log out</button>
+                </form>
+
                </div>
             </div>
         </section>
