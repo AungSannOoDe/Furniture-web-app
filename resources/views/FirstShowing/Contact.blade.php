@@ -29,17 +29,27 @@
 
        <div>
           <form action="{{route('user#add#review')}}" method="POST" class="">
+            @csrf
              <div>
                  <label for="name" class="block text-sm text-slate-400">Your Name</label>
                  <input type="text" name="name" id="name" class="h-12 w-96 border block rounded-lg border-slate-700 mt-2 ">
+                 @error("name")
+                     <small class="text-red-500">{{$message}}</small>
+                 @enderror
              </div>
              <div class="mt-12">
                <label for="email" class="block text-sm text-slate-400">Your Email</label>
                <input type="text" name="email" id="email" class="h-12 w-96 border block rounded-lg border-slate-700 mt-2 ">
+               @error("email")
+                   <small class="text-red-500">{{$message}}</small>
+               @enderror
            </div>
            <div class="mt-12">
              <label for="message" class="block text-sm text-slate-400">Message</label>
             <textarea name="message" id="message" class=" w-96 h-24 border block rounded-lg border-slate-700 mt-2"></textarea>
+            @error("message")
+            <small class="text-red-500">{{$message}}</small>
+        @enderror
          </div>
  <div class="mt-10">
 <button class=" text-white rounded-lg px-5 py-3 bg-yellow-600 ">Send Message</button>

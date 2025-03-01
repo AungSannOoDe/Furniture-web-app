@@ -26,6 +26,13 @@
                 <small class="text-danger">{{ $message}}</small>
             @enderror
         </div>
+        <div class="form-group">
+            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
+          <input type="text" class="form-control rounded-left @error('phone') is-invalid  @enderror " placeholder="Enter phone...." name="phone" :value="{{old('phone')}}" >
+          @error('phone')
+          <small class="text-danger">{{ $message}}</small>
+      @enderror
+        </div>
     <div class="form-group">
         <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
       <input type="password" class="form-control rounded-left @error('password') is-invalid  @enderror " placeholder=" Enter Password..." name="password">

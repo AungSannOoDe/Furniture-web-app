@@ -20,6 +20,7 @@ Route::get('firstSee',[AuthController::class,'first'])->name('user#first#Slide')
 Route::get('SecondSee',[AuthController::class,'Second'])->name('user#Second#Slide');
 Route::get('thirdSee',[AuthController::class,'third'])->name('user#third#Slide');
 Route::post('addContact',[ContactController::class,'addCon'])->name('user#add#review');
+Route::get('productlist',[AjaxController::class,'productlist'])->name('user#products');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -54,7 +55,7 @@ Route::middleware([
             Route::get('only',[profileController::class,'profile'])->name('admin#profile');
             Route::get('adminChangepassword',[profileController::class,'changePassword'])->name('admin#changepassword');
         });
-        Route::get('Contacts',[VoterController::class,'viewVoter'])->name('admin#selectors');
+        Route::get('Contacts',[ContactController::class,'Reviwes'])->name('admin#selectors');
         Route::get('adminusers',[AuthController::class,'viewusers'])->name('admin#users');
         Route::get('adminproduct',[ProductController::class,'product'])->name('admin#product');
         Route::get('admin/user/{id}',[AuthController::class,'details'])->name('admin#details');

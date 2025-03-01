@@ -11,13 +11,18 @@ use App\Models\productDetails;
 
 class AjaxController extends Controller
 {
+    public function productlist(Request $request){
+        logger($request->all());
+        $product=Product::get();
+        logger($product);
+        return $product;
+    }
     public function list(Request $request){
-        logger($request);
         if($request->status=="asc"){
-            $data=product::orderBy('created_at','asc')->get();
+            $data=Product::orderBy('created_at','asc')->get();
         }
          else if($request->status=="desc"){
-            $data=product::orderBy('created_at','desc')->get();
+            $data=Product::orderBy('created_at','desc')->get();
          }
         return $data;
     }
@@ -35,7 +40,7 @@ class AjaxController extends Controller
         Cart::where('user_id',Auth::user()->id)->where('pizza_id',$request->productId)->where('id',$request->orderId)->delete();
     }
     public function formadd(Request $request){
-        logger($request);
+
         $raw=$this->getFormad($request);
         productDetails::create($raw);
         $response=[

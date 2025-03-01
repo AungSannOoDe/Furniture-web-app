@@ -3,7 +3,12 @@ const btnprofile=document.querySelector('.btnprofile');
  const btnCart=document.querySelector('.btnCart');
  const cart=document.querySelector('.cart');
  const remove=document.querySelector('#remove');
- const removeprofile=document.querySelector('#removeprofile')
+ const removeprofile=document.querySelector('#removeprofile');
+ const adminbtn=document.querySelector('#adminbtn');
+ const layout=docuemnt.querySelector('.toggle');
+ adminbtn.addEventListener('mouseover',()=>{
+    console.log(layout.classList.remove('invisible'));
+ })
   btnCart.addEventListener('mouseover',()=>{
    console.log(cart.classList.remove('invisible'));
   })
