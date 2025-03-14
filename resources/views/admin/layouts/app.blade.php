@@ -32,6 +32,10 @@
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" >
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <input type="submit" value="log out" class="btn btn-danger mx-3 w-75">
+                </form>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -81,6 +85,10 @@
                             <a class="nav-link" href="{{route('admin#add#details')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                  Add details
+                            </a>
+                            <a class="nav-link" href="{{route('admin#posts')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-pen"></i></div>
+                                  Blog
                             </a>
                             <a  class="nav-link collapsed" href="{{route('admin#users')}}">
                                 <i class="fa-solid fa-user"></i>

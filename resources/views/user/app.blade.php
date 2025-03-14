@@ -13,14 +13,8 @@
         <div class="max-w-7xl mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ">
           <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 font-poppins">
             <img src="{{asset('images/logo.png')}}" alt="" width="50px" height="32px">
-
             <span >
-                @if (Auth::user()->role=="user")
-                <a  class="ml-3 text-xl">Furnio</a>
-                @else
-                <a href="{{route('admin#loginPage')}}" class="ml-3 text-xl">Furnio</a>
-                @endif
-
+                 <a  class="ml-3 text-xl">Furnio</a>
                  </span>
           </a>
           <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base gap-x-6 justify-center font-medium">
@@ -36,11 +30,10 @@
                 <a href="" class="btnprofile">
                     <i class="fa-solid fa-user"></i>
                 </a>
-
          </div>
         </div>
         <section>
-            <div class="w-[450px] bg-white h-[600px] absolute top-0 right-0 px-6 py-6 invisible cart">
+            <div class="w-[450px] bg-white h-[600px] z-[1000] absolute top-0 right-0 px-6 py-6 invisible cart">
                 <div class="flex  justify-between">
                     <div>
                         <h1 class="text-2xl font-bold tracking-wider">Shopping   Cart</h1>
@@ -90,11 +83,9 @@
                 </div>
                </div>
              <div>
-
              </div>
-
             </div>
-            <div class="w-[150px] h-[150px] bg-white absolute    top-16    left-[89%] px-3 rounded-lg profile invisible">
+            <div class="w-[150px] h-[150px] bg-white absolute z-[1000]   top-16    left-[89%] px-3 rounded-lg profile invisible">
                 <div class="flex justify-end ">
                     <i class="fa-solid fa-xmark" id="removeprofile"></i>
                 </div>
@@ -103,19 +94,16 @@
                 </div>
               <h2 class="text-center mt-3">{{Auth::user()->name}}</h2>
                <div class="ml-8">
-                <form action="{{route('logout')}}" method="post">
+                <form action="{{route('logout')}}" method="POST">
                     @csrf
-                    <button type="submit" class="bg-yellow-600 px-2 py-1  text-white  text-center rounded-md hover:bg-white hover:border-yellow-600 duration-150 transition-all ">log out</button>
+                    <input type="submit" value="log out" class="bg-yellow-600 px-2 py-1  text-white  text-center rounded-md hover:bg-white hover:text-yellow-500 hover:border hover:border-yellow-600 duration-150 transition-all "">
                 </form>
-
                </div>
             </div>
         </section>
         @yield('header')
-
     </header>
       @yield('Content')
-
            <footer class="bg-white mt-56 px-2 py-3">
         <hr>
          <section class="md:flex justify-around mt-3 sm:bg-center">

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Contact;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Orderlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +31,18 @@ class AuthController extends Controller
         return view('admin.RegisterPage');
     }
     public function dashboard(){
-        return view('admin.Dashboard.admindashboard');
+        $userall=User::get();
+        $users=User::where('role','user')->get();
+        $admin=User::where('role','admin')->get();
+        $success=Order::where('status','1')->get();
+        $pending=Order::where('status','0')->get();
+        $product=Product::get();
+        $Category=Category::get();
+        $reviews=Contact::get();
+        return view('admin.Dashboard.admindashboard',compact(['users','admin','userall','success','pending','product','Category','reviews']));
+    }
+    public function posts(){
+        return view('user.Post');
     }
     public function gotodashboard(){
         if(Auth::user()->role==="admin"){

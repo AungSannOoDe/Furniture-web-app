@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
@@ -55,6 +56,8 @@ Route::middleware([
             Route::get('only',[profileController::class,'profile'])->name('admin#profile');
             Route::get('adminChangepassword',[profileController::class,'changePassword'])->name('admin#changepassword');
         });
+        Route::post('blog',[BlogController::class,'addBlog'])->name('admin#blogs');
+        Route::get('post',[AuthController::class,'posts'])->name('admin#posts');
         Route::get('Contacts',[ContactController::class,'Reviwes'])->name('admin#selectors');
         Route::get('adminusers',[AuthController::class,'viewusers'])->name('admin#users');
         Route::get('adminproduct',[ProductController::class,'product'])->name('admin#product');

@@ -15,7 +15,8 @@ class ContactController extends Controller
        return back()->with(["Success"=>"Messages Added Successfully"]);
     }
     public function Reviwes(){
-          dd("hello");
+        $contacts=Contact::get();
+         return view('admin.Contact.contact',compact('contacts'));
     }
     private function MessageValidation($request){
         Validator::make($request->all(),[

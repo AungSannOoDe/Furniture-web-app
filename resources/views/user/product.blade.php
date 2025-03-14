@@ -74,7 +74,7 @@ class="bg-[url('../images/product5.png')] w-full h-[450px] opacity-90 bg-no-repe
         <input type="hidden" name="" value="{{$product->price}}" id="Price">
         <input type="hidden" name="" value="1" id="qty">
         <div class="relative">
-          <img src="{{asset('storage/'.$product->image)}}" class="card-image" alt="">
+          <img src="{{asset('storage/image/'.$product->image)}}" class="card-image" alt="">
           <div class="absolute top-3 right-8 bg-red-400  pt-4 pl-3 w-14 h-14 rounded-full">
             <p class="text-white">New</p>
      </div>
